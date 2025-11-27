@@ -41,8 +41,48 @@ Exemple:
 
 def fibonacci(fibonacci_number):
     # Write here your code
+    # 1. VALIDACIÓN DE ERRORES 
+    
+    # Comprobar si no es un número entero 
+    if not isinstance(fibonacci_number, int):
+        # Lanzar la excepción ValueError con un mensaje descriptivo
+        raise ValueError("El valor de la posición debe ser un número entero.")
+        
+    # Comprobar si el número es negativo o cero 
+    if fibonacci_number <= 0:
+        # Lanzar la excepción ValueError con un mensaje descriptivo
+        raise ValueError("La posición de Fibonacci debe ser un número entero positivo mayor a cero.")
+        
+    # 2. CASOS BASE (F(1) y F(2))
+    
+    # F(1) es 1
+    if fibonacci_number == 1:
+        return 1
+    
+    # F(2) es 1
+    if fibonacci_number == 2:
+        return 1
+
+    # 3. ALGORITMO ITERATIVO (Para N > 2)
+    
+    # Inicializar los dos primeros valores de la serie.
+    # 'a' representa F(n-2) y 'b' representa F(n-1)
+    a = 1
+    b = 1
+    
+    # Usamos un bucle FOR para iterar desde la posición 3 hasta la posición deseada.
+    for _ in range(3, fibonacci_number + 1):
+        # Calcular el siguiente número de Fibonacci (el nuevo F(n))
+        next_fib = a + b
+        
+        # Actualizar 'a' y 'b' para la siguiente iteración (desplazamiento)
+        a = b
+        b = next_fib
+        
+    # El valor final en 'b' es el resultado en la posición 'fibonacci_number'
+    return b
     pass
 
 # Si quieres probar tu código, descomenta las siguientes líneas y ejecuta el script 
 # Si vols provar el teu codi, descomenta les línies següents i executa l'script
-# print(fibonacci(10))
+print(fibonacci(10))
