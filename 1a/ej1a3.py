@@ -33,7 +33,7 @@ Exemple:
 
 def invert_text(text_chain:str):
     # Write here your code
-    def invert_text(text_chain:str):
+    
     return text_chain[::-1]
     pass
 
